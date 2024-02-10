@@ -336,7 +336,7 @@ const CsvPage = () => {
                         </div>
                     ))
                 ) : (
-                    <p>Loading data...</p>
+                    <p className={styles.loading}>Loading data...</p>
                 )}
             </div>
         </div>

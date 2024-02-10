@@ -115,3 +115,7 @@
     max-width: 500px;
     font-weight: bolder;
 }
+
+.loading {
+    color: #fff;
+}
