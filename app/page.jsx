@@ -10,8 +10,16 @@ const CsvPage = () => {
 
     const costPerWh = 0.2516;
 
+    const instance = axios.create({
+        baseURL: 'http://192.168.1.200',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            // Ajoutez d'autres en-têtes si nécessaire
+        },
+    });
+
     useEffect(() => {
-        axios.post('/api/Download?side=right&type=chargeSession')
+        instance.post('/Download?side=right&type=chargeSession')
             .then(response => {
                 // Parse CSV data using Papaparse
                 /* Data fromat :
@@ -69,7 +77,7 @@ const CsvPage = () => {
                 console.error('Error fetching CSV data:', error);
             });
 
-        axios.get('/api/Update_state.jsp?side=right&type=TableauDeBord')
+        instance.get('/Update_state.jsp?side=right&type=TableauDeBord')
             .then(response => {
                 // Traitement de la réponse ici
                 /* data format :
